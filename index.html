@@ -151,7 +151,7 @@
           gltf-model="assets/base.glb"
           position="0 0 0"
           rotation="0 1 0"
-          scale="1 1 1"
+          scale="0.3 0.3 0.3"
           visible="false"
           animation-mixer="clip: *; timeScale: 1; loop: repeat"
         ></a-entity>
@@ -169,7 +169,7 @@
           gltf-model="assets/base.glb"
           position="0 0 0"
           rotation="0 0 0"
-          scale="1 1 1"
+          scale="0.3 0.3 0.3"
           visible="false"
           animation-mixer="clip: *; timeScale: 1; loop: repeat"
         ></a-entity>
@@ -187,7 +187,7 @@
           gltf-model="assets/base.glb"
           position="0 0 0"
           rotation="0 0 0"
-          scale="1 1 1"
+          scale="0.3 0.3 0.3"
           visible="false"
           animation-mixer="clip: *; timeScale: 1; loop: repeat"
         ></a-entity>
@@ -205,7 +205,7 @@
           gltf-model="assets/base.glb"
           position="0 0 0"
           rotation="0 0 0"
-          scale="1 1 1"
+          scale="0.3 0.3 0.3"
           visible="false"
           animation-mixer="clip: *; timeScale: 1; loop: repeat"
         ></a-entity>
@@ -223,7 +223,7 @@
           gltf-model="assets/base.glb"
           position="0 0 0"
           rotation="0 0 0"
-          scale="1 1 1"
+          scale="0.3 0.3 0.3"
           visible="false"
           animation-mixer="clip: *; timeScale: 1; loop: repeat"
         ></a-entity>
@@ -241,7 +241,7 @@
           gltf-model="assets/base.glb"
           position="0 0 0"
           rotation="0 0 0"
-          scale="1 1 1"
+          scale="0.3 0.3 0.3"
           visible="false"
           animation-mixer="clip: *; timeScale: 1; loop: repeat"
         ></a-entity>
@@ -259,7 +259,7 @@
           gltf-model="assets/base.glb"
           position="0 0 0"
           rotation="0 0 0"
-          scale="1 1 1"
+          scale="0.3 0.3 0.3"
           visible="false"
           animation-mixer="clip: *; timeScale: 1; loop: repeat"
         ></a-entity>
@@ -277,7 +277,7 @@
           gltf-model="assets/base.glb"
           position="0 0 0"
           rotation="0 0 0"
-          scale="1 1 1"
+          scale="0.3 0.3 0.3"
           visible="false"
           animation-mixer="clip: *; timeScale: 1; loop: repeat"
         ></a-entity>
@@ -295,7 +295,7 @@
           gltf-model="assets/base.glb"
           position="0 0 0"
           rotation="0 0 0"
-          scale="1 1 1"
+          scale="0.3 0.3 0.3"
           visible="false"
           animation-mixer="clip: *; timeScale: 1; loop: repeat"
         ></a-entity>
@@ -313,7 +313,7 @@
           gltf-model="assets/base.glb"
           position="0 0 0"
           rotation="0 0 0"
-          scale="1 1 1"
+          scale="0.3 0.3 0.3"
           visible="false"
           animation-mixer="clip: *; timeScale: 1; loop: repeat"
         ></a-entity>
@@ -331,7 +331,7 @@
       <a-entity
         id="copa-unica"
         class="copa-model"
-        gltf-model=""
+        gltf-model="assets/copa.glb"
         position="0 0 0"
         scale="0.3 0.3 0.3"
         visible="false"
@@ -1981,10 +1981,10 @@
             100
           ).toFixed(1);
           content.innerHTML = `
-            <h2 style="color: var(--accent); text-align: center;">🎉 Trivia Completada 🎉</h2>
-            <div class="trivia-score">${currentTrivia.score}/${currentTrivia.questions.length} — ${pct}%</div>
-            <div class="trivia-progress"><div class="trivia-progress-bar" style="width:${pct}%"></div></div>
-            <button class="context-btn" onclick="closeTrivia()" style="width: 100%;">Cerrar</button>`;
+                <h2 style="color: var(--accent); text-align: center;">🎉 Trivia Completada 🎉</h2>
+                <div class="trivia-score">${currentTrivia.score}/${currentTrivia.questions.length} — ${pct}%</div>
+                <div class="trivia-progress"><div class="trivia-progress-bar" style="width:${pct}%"></div></div>
+                <button class="context-btn" onclick="closeTrivia()" style="width: 100%;">Cerrar</button>`;
         } else {
           const q = currentTrivia.questions[currentTrivia.currentQuestion];
           const pct =
@@ -1992,13 +1992,13 @@
               currentTrivia.questions.length) *
             100;
           content.innerHTML = `
-            <h2 style="color: var(--accent); text-align: center;">🧠 Trivia</h2>
-            <div class="trivia-progress"><div class="trivia-progress-bar" style="width:${pct}%"></div></div>
-            <p class="trivia-question">Pregunta ${currentTrivia.currentQuestion + 1}/${currentTrivia.questions.length}:</p>
-            <p class="trivia-question" style="font-size: 20px; font-weight: bold;">${q.question}</p>
-            <div class="trivia-options">
-                ${q.options.map((o, i) => `<div class="trivia-option" onclick="answerTrivia(${i})">${o}</div>`).join("")}
-            </div>`;
+                <h2 style="color: var(--accent); text-align: center;">🧠 Trivia</h2>
+                <div class="trivia-progress"><div class="trivia-progress-bar" style="width:${pct}%"></div></div>
+                <p class="trivia-question">Pregunta ${currentTrivia.currentQuestion + 1}/${currentTrivia.questions.length}:</p>
+                <p class="trivia-question" style="font-size: 20px; font-weight: bold;">${q.question}</p>
+                <div class="trivia-options">
+                    ${q.options.map((o, i) => `<div class="trivia-option" onclick="answerTrivia(${i})">${o}</div>`).join("")}
+                </div>`;
         }
         container.classList.add("active");
       }
@@ -2025,14 +2025,14 @@
           const activeClass = index === current ? "active" : "";
           if (item.type === "image") {
             slidesHtml += `<div class="carousel-slide ${activeClass}">
-                <img src="${item.url}" alt="${item.title || ""}" loading="lazy">
-                <div class="carousel-title">${item.title || ""}</div>
-            </div>`;
+                    <img src="${item.url}" alt="${item.title || ""}" loading="lazy">
+                    <div class="carousel-title">${item.title || ""}</div>
+                </div>`;
           } else if (item.type === "video") {
             slidesHtml += `<div class="carousel-slide ${activeClass}">
-                <video src="${item.url}" controls ${index === current ? "autoplay" : ""}></video>
-                <div class="carousel-title">${item.title || ""}</div>
-            </div>`;
+                    <video src="${item.url}" controls ${index === current ? "autoplay" : ""}></video>
+                    <div class="carousel-title">${item.title || ""}</div>
+                </div>`;
           }
         });
 
@@ -2042,19 +2042,19 @@
         });
 
         content.innerHTML = `
-        <h2 style="color: var(--accent); text-align: center;">📸 Galería</h2>
-        <div class="carousel-container">
-            ${slidesHtml}
-        </div>
-        <div class="carousel-controls">
-            <button class="carousel-btn" onclick="changeGallerySlide(${current - 1})" ${current === 0 ? "disabled" : ""}>‹</button>
-            <span style="font-size: 16px; font-weight: bold;">${current + 1} / ${media.length}</span>
-            <button class="carousel-btn" onclick="changeGallerySlide(${current + 1})" ${current === media.length - 1 ? "disabled" : ""}>›</button>
-        </div>
-        <div class="carousel-indicators">
-            ${dotsHtml}
-        </div>
-        <button class="context-btn" onclick="closeTrivia()" style="margin-top:20px; width:100%;">Cerrar</button>`;
+            <h2 style="color: var(--accent); text-align: center;">📸 Galería</h2>
+            <div class="carousel-container">
+                ${slidesHtml}
+            </div>
+            <div class="carousel-controls">
+                <button class="carousel-btn" onclick="changeGallerySlide(${current - 1})" ${current === 0 ? "disabled" : ""}>‹</button>
+                <span style="font-size: 16px; font-weight: bold;">${current + 1} / ${media.length}</span>
+                <button class="carousel-btn" onclick="changeGallerySlide(${current + 1})" ${current === media.length - 1 ? "disabled" : ""}>›</button>
+            </div>
+            <div class="carousel-indicators">
+                ${dotsHtml}
+            </div>
+            <button class="context-btn" onclick="closeTrivia()" style="margin-top:20px; width:100%;">Cerrar</button>`;
 
         container.classList.add("active");
       }
@@ -2141,13 +2141,25 @@
               m.setAttribute("visible", "false");
             });
 
-            // Ocultar modelos únicos
+            // Seleccionamos los modelos únicos
             const estadioEl = document.getElementById("estadio-unico");
             const copaEl = document.getElementById("copa-unica");
+
+            // Ocultarlos temporalmente
             if (estadioEl) estadioEl.setAttribute("visible", "false");
             if (copaEl) copaEl.setAttribute("visible", "false");
 
-            // Mostrar de inmediato el modelo del país detectado
+            // [ESTA ES LA MAGIA]: Movemos los modelos únicos adentro de este marcador
+            if (estadioEl) {
+              marker.appendChild(estadioEl);
+              estadioEl.setAttribute("rotation", "90 0 0"); // Levantamos el estadio
+            }
+            if (copaEl) {
+              marker.appendChild(copaEl);
+              copaEl.setAttribute("rotation", "90 45 0"); // Levantamos la copa
+            }
+
+            // Mostrar el modelo base del país
             const model = document.getElementById(`model-${cfg.code}`);
             if (model) {
               model.setAttribute("visible", "true");
@@ -2160,11 +2172,11 @@
 
             activeMarkerEl = marker;
 
-            // Precarga opcional de estadio y copa
+            // Precarga dinámica del estadio correspondiente a este país
             cargarEstadio(cfg.code);
             cargarCopa(cfg.code);
 
-            // Actualizar estado
+            // Actualizar el estado de la aplicación
             setState({
               code: cfg.code,
               name: cfg.name,
@@ -2176,39 +2188,11 @@
               cfg.code + " detectado";
             document.getElementById("debugState").textContent = cfg.code;
 
-            // Mostrar inmediatamente según pantalla actual
+            // Mostrar el elemento que corresponda según la pantalla actual de la UI
             actualizarVisibilidadPorPantalla();
-          });
-
-          marker.addEventListener("targetLost", function () {
-            if (triviaActive) return;
-
-            const model = document.getElementById(`model-${cfg.code}`);
-            if (model) model.setAttribute("visible", "false");
-
-            const estadioEl = document.getElementById("estadio-unico");
-            const copaEl = document.getElementById("copa-unica");
-            if (estadioEl) estadioEl.setAttribute("visible", "false");
-            if (copaEl) copaEl.setAttribute("visible", "false");
-
-            activeMarkerEl = null;
-
-            // Revisar si todavía hay algún target visible
-            const anyVisible = MARKERS_CONFIG.some((c) => {
-              const m = document.getElementById(c.id);
-              return m && m.object3D && m.object3D.visible;
-            });
-
-            if (!anyVisible) {
-              setState(null);
-              document.getElementById("debugMarkerStatus").textContent =
-                "No detectado";
-              document.getElementById("debugState").textContent = "Ninguno";
-            }
           });
         });
       }
-
       // ==================================================
       // SELECTOR DE SEMILLA DE COLOR
       // ==================================================
@@ -2345,10 +2329,10 @@
               break;
             case "stadium":
               overlay.innerHTML = `<h2>Estadio ${currentState.name}</h2><p>${screen.content}</p>
-                    <div style="margin-top:10px;text-align:center">
-                        <p>🏟️ Estadio: ${screen.info?.estadio?.toUpperCase() || "Desconocido"}</p>
-                        <p style="color: var(--accent); font-size: 18px;">¡EL ESTADIO YA ESTÁ VISIBLE EN RA! </p>
-                    </div>`;
+                        <div style="margin-top:10px;text-align:center">
+                            <p>🏟️ Estadio: ${screen.info?.estadio?.toUpperCase() || "Desconocido"}</p>
+                            <p style="color: var(--accent); font-size: 18px;">¡EL ESTADIO YA ESTÁ VISIBLE EN RA! </p>
+                        </div>`;
               actionBtn1.textContent = "Info";
               actionBtn2.textContent = "← Atrás";
               actionBtn1.onclick = () =>
@@ -2377,7 +2361,7 @@
               break;
             case "trivia":
               overlay.innerHTML = `<h2>Trivia ${currentState.name}</h2><p>${screen.content}</p>
-                    <p style="margin-top:10px"> ${screen.questions?.length || 0} preguntas disponibles</p>`;
+                        <p style="margin-top:10px"> ${screen.questions?.length || 0} preguntas disponibles</p>`;
               actionBtn1.textContent = "🎮 JUGAR";
               actionBtn2.textContent = "← Atrás";
               actionBtn1.onclick = () => {

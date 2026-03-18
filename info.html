@@ -86,15 +86,24 @@
                         class="d-block w-100 object-fit-cover"
                         alt="Media 1 del país"
                       />
-                      <video
+                      <iframe
                         id="carouselVideo1"
                         class="d-none w-100 object-fit-cover"
-                        controls
-                        playsinline
-                        preload="metadata"
+                        src=""
+                        allow="
+                          accelerometer;
+                          autoplay;
+                          clipboard-write;
+                          encrypted-media;
+                          gyroscope;
+                          picture-in-picture;
+                          web-share;
+                        "
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
                       >
                         <source src="" type="video/mp4" />
-                      </video>
+                      </iframe>
                     </div>
                   </div>
 
@@ -106,15 +115,25 @@
                         class="d-block w-100 object-fit-cover"
                         alt="Media 2 del país"
                       />
-                      <video
+                      <iframe
                         id="carouselVideo2"
                         class="d-none w-100 object-fit-cover"
-                        controls
-                        playsinline
-                        preload="metadata"
+                        src=""
+                        title="Video 1 del país"
+                        allow="
+                          accelerometer;
+                          autoplay;
+                          clipboard-write;
+                          encrypted-media;
+                          gyroscope;
+                          picture-in-picture;
+                          web-share;
+                        "
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
                       >
                         <source src="" type="video/mp4" />
-                      </video>
+                      </iframe>
                     </div>
                   </div>
 
@@ -126,15 +145,25 @@
                         class="d-block w-100 object-fit-cover"
                         alt="Media 3 del país"
                       />
-                      <video
+                      <iframe
                         id="carouselVideo3"
                         class="d-none w-100 object-fit-cover"
-                        controls
-                        playsinline
-                        preload="metadata"
+                        src=""
+                        title="Video 1 del país"
+                        allow="
+                          accelerometer;
+                          autoplay;
+                          clipboard-write;
+                          encrypted-media;
+                          gyroscope;
+                          picture-in-picture;
+                          web-share;
+                        "
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
                       >
                         <source src="" type="video/mp4" />
-                      </video>
+                      </iframe>
                     </div>
                   </div>
                 </div>
@@ -194,7 +223,10 @@
             "Tricampeona del mundo (1978, 1986, 2022). Cuna de leyendas como Maradona y Messi, la albiceleste es sinónimo de pasión técnica y garra competitiva en cada cita mundialista.",
           galeria: [
             { type: "image", src: "./assets/ARG/image1.webp" },
-            { type: "video", src: "./assets/MEX/video.mp4" },
+            {
+              type: "youtube",
+              src: "https://www.youtube.com/embed/kDQrpttTxyI",
+            },
             { type: "image", src: "./assets/ARG/image2.webp" },
           ],
         },
@@ -205,7 +237,10 @@
             "Con seis participaciones mundialistas, destaca su histórica actuación en Brasil 2014 llegando a cuartos de final. Reconocida por su fútbol alegre, vistoso y su icónica generación de los 90.",
           galeria: [
             { type: "image", src: "./assets/COL/image2.jpg" },
-            { type: "video", src: "./assets/MEX/video.mp4" },
+            {
+              type: "youtube",
+              src: "https://www.youtube.com/embed/rq6_kDkvwew",
+            },
             { type: "image", src: "./assets/COL/image1.webp" },
           ],
         },
@@ -216,7 +251,10 @@
             'Campeona en Sudáfrica 2010. "La Roja" revolucionó el fútbol con su estilo de posesión (Tiki-taka), logrando una hegemonía histórica entre 2008 y 2012 que culminó con la estrella mundial.',
           galeria: [
             { type: "image", src: "./assets/ESP/image1.webp" },
-            { type: "video", src: "./assets/MEX/video.mp4" },
+            {
+              type: "youtube",
+              src: "https://www.youtube.com/embed/dLqLUS6vGqw",
+            },
             { type: "image", src: "./assets/ESP/image2.webp" },
           ],
         },
@@ -227,7 +265,10 @@
             'Bicampeona mundial (1998, 2018). "Les Bleus" se caracterizan por una potencia física envidiable y una formación de talento joven que los mantiene en la élite del fútbol global constantemente.',
           galeria: [
             { type: "image", src: "./assets/FRA/image1.jpg" },
-            { type: "video", src: "./assets/MEX/video.mp4" },
+            {
+              type: "youtube",
+              src: "https://www.youtube.com/embed/GrsEAvRerTg",
+            },
             { type: "image", src: "./assets/FRA/image2.webp" },
           ],
         },
@@ -238,7 +279,10 @@
             'La potencia más consistente de Asia. Conocidos como los "Samuráis Azules", destacan por su disciplina táctica, velocidad y por haber alcanzado los octavos de final en varias ocasiones recientes.',
           galeria: [
             { type: "image", src: "./assets/JPN/image1.jpg" },
-            { type: "video", src: "./assets/MEX/video.mp4" },
+            {
+              type: "youtube",
+              src: "https://www.youtube.com/embed/eqRjG3dAv5M",
+            },
             { type: "image", src: "./assets/JPN/image2.webp" },
           ],
         },
@@ -249,7 +293,10 @@
             "Hizo historia en 2002 logrando el cuarto lugar, la mejor posición para un equipo asiático. Son famosos por su incansable despliegue físico y su espíritu de lucha hasta el último minuto.",
           galeria: [
             { type: "image", src: "./assets/KOR/image1.webp" },
-            { type: "video", src: "./assets/MEX/video.mp4" },
+            {
+              type: "youtube",
+              src: "https://www.youtube.com/embed/gewILgS9cFo",
+            },
             { type: "image", src: "./assets/KOR/image2.jpg" },
           ],
         },
@@ -260,7 +307,10 @@
             "Un gigante de la CONCACAF con 17 apariciones. Anfitrión de dos Mundiales (1970, 1986), es célebre por su fiel afición y por avanzar consistentemente de la fase de grupos durante décadas.",
           galeria: [
             { type: "image", src: "./assets/MEX/image1.webp" },
-            { type: "video", src: "./assets/MEX/video.mp4" },
+            {
+              type: "youtube",
+              src: "https://www.youtube.com/embed/at8s4BE3SiY",
+            },
             { type: "image", src: "./assets/MEX/image2.webp" },
           ],
         },
@@ -271,7 +321,10 @@
             "Liderada históricamente por figuras como Eusébio y Cristiano Ronaldo. Su mejor marca fue el tercer puesto en 1966. Es un equipo técnico que siempre compite al más alto nivel europeo.",
           galeria: [
             { type: "image", src: "./assets/POR/image1.jpg" },
-            { type: "video", src: "./assets/MEX/video.mp4" },
+            {
+              type: "youtube",
+              src: "https://www.youtube.com/embed/eLJ5MoSPjVE",
+            },
             { type: "image", src: "./assets/POR/image2.jpg" },
           ],
         },
@@ -282,7 +335,10 @@
             'Las "Águilas de Cartago" fueron el primer equipo africano en ganar un partido en un Mundial (1978). Representan el orgullo del fútbol magrebí con una defensa sólida y ordenada.',
           galeria: [
             { type: "image", src: "./assets/TUN/image1.jpg" },
-            { type: "video", src: "./assets/MEX/video.mp4" },
+            {
+              type: "youtube",
+              src: "https://www.youtube.com/embed/LXUGIah424k",
+            },
             { type: "image", src: "./assets/TUN/image2.webp" },
           ],
         },
@@ -293,7 +349,10 @@
             'Primer campeón mundial (1930) y protagonista del inolvidable "Maracanazo" en 1950. Un país pequeño en territorio pero gigante en historia, definido por la legendaria "Garra Charrúa".',
           galeria: [
             { type: "image", src: "./assets/URY/image1.jpg" },
-            { type: "video", src: "./assets/MEX/video.mp4" },
+            {
+              type: "youtube",
+              src: "https://www.youtube.com/embed/b97rXmJ9yVw",
+            },
             { type: "image", src: "./assets/URY/image2.jpg" },
           ],
         },
@@ -305,34 +364,54 @@
 
       function setCarouselMedia(slot, media, countryName) {
         const img = document.getElementById(`carouselImg${slot}`);
-        const video = document.getElementById(`carouselVideo${slot}`);
-        const source = video.querySelector("source");
+        const iframe = document.getElementById(`carouselVideo${slot}`);
 
+        // 1. Si es imagen o no hay datos
         if (!media || media.type === "image") {
-          img.src = media?.src || `./assets/${countryName}/image.jpg`;
-          img.alt = `${countryName} imagen ${slot}`;
+          img.src = media ? media.src : `./assets/${countryName}/image.jpg`;
           img.classList.remove("d-none");
-
-          source.src = "";
-          video.load();
-          video.pause();
-          video.classList.add("d-none");
+          iframe.classList.add("d-none");
+          iframe.src = "";
           return;
         }
 
-        if (media.type === "video") {
-          img.classList.add("d-none");
+        // 2. Si es Video o Youtube (aceptamos ambos términos por si acaso)
+        if (media.type === "video" || media.type === "youtube") {
+          let videoUrl = media.src;
 
-          source.src = media.src;
-          video.load();
-          video.classList.remove("d-none");
+          if (!videoUrl || videoUrl === "") {
+            // Si el link está vacío, mostramos la bandera para que no se vea negro
+            img.src = document.getElementById("countryFlag").src;
+            img.classList.remove("d-none");
+            iframe.classList.add("d-none");
+            return;
+          }
+
+          // CONVERSIÓN CRÍTICA: De link normal a link de inserción (embed)
+          if (videoUrl.includes("watch?v=")) {
+            videoUrl = videoUrl.replace("watch?v=", "embed/");
+          } else if (videoUrl.includes("youtu.be/")) {
+            videoUrl = videoUrl.replace("youtu.be/", "youtube.com/embed/");
+          }
+
+          // Quitamos parámetros extra que ensucian el link y activamos la API
+          videoUrl = videoUrl.split("&")[0];
+          iframe.src = `${videoUrl}?enablejsapi=1&rel=0`;
+
+          img.classList.add("d-none");
+          iframe.classList.remove("d-none");
         }
       }
-
       function pauseAllCarouselVideos() {
-        const videos = document.querySelectorAll("#countryCarousel video");
-        videos.forEach((video) => {
-          video.pause();
+        const iframes = document.querySelectorAll("#countryCarousel iframe");
+        iframes.forEach((iframe) => {
+          if (iframe.src && iframe.src.includes("youtube.com")) {
+            // Envía un comando interno a YouTube para pausar sin recargar la página
+            iframe.contentWindow.postMessage(
+              '{"event":"command","func":"pauseVideo","args":""}',
+              "*",
+            );
+          }
         });
       }
 
@@ -358,7 +437,10 @@
 
         const gallery = country.galeria || [
           { type: "image", src: country.bandera },
-          { type: "video", src: `./assets/${code}/video.mp4` },
+          {
+            type: "youtube",
+            src: "https://www.youtube.com/watch?v=D9o3OQJ5X-s",
+          },
           { type: "image", src: country.bandera },
         ];
 
@@ -381,6 +463,16 @@
           });
         }
       });
+
+      function pauseAllCarouselVideos() {
+        const iframes = document.querySelectorAll("#countryCarousel iframe");
+
+        iframes.forEach((iframe) => {
+          const currentSrc = iframe.src;
+          iframe.src = "";
+          iframe.src = currentSrc;
+        });
+      }
     </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
