@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./style.css" />
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+
   <!-- Three.js addons para EffectComposer/Bloom (misma versión que usa A-Frame 1.4) -->
   <script src="https://unpkg.com/three@0.146.0/examples/js/postprocessing/EffectComposer.js"></script>
   <script src="https://unpkg.com/three@0.146.0/examples/js/postprocessing/RenderPass.js"></script>
@@ -61,7 +62,7 @@
     <!-- Botones de acción (fuegos y animación) -->
     <div class="action-buttons">
       <button id="fireworksBtn" class="action-btn">Fuegos AR</button>
-      <button id="playAnimation" class="action-btn">Animación</button>
+      <button id="playAnimation" class="action-btn">▶ Animación</button>
     </div>
 
 
@@ -208,62 +209,52 @@
 
     <a-entity id="marker-ARG" emitevents="true" mindar-image-target="targetIndex: 3">
       <a-entity id="model-ARG" class="ar-model" data-pais="ARG" gltf-model="assets/base.glb" position="0 0 0"
-        rotation="0 1 0" scale="0.3 0.3 0.3" visible="false"
-        animation-mixer="clip: *; timeScale: 1; loop: repeat"></a-entity>
+        rotation="0 0 0" scale="0.3 0.3 0.3" visible="false"></a-entity>
     </a-entity>
 
     <a-entity id="marker-COL" emitevents="true" mindar-image-target="targetIndex: 2">
       <a-entity id="model-COL" class="ar-model" data-pais="COL" gltf-model="assets/base.glb" position="0 0 0"
-        rotation="0 0 0" scale="0.3 0.3 0.3" visible="false"
-        animation-mixer="clip: *; timeScale: 1; loop: repeat"></a-entity>
+        rotation="0 0 0" scale="0.3 0.3 0.3" visible="false"></a-entity>
     </a-entity>
 
     <a-entity id="marker-ESP" emitevents="true" mindar-image-target="targetIndex: 1">
       <a-entity id="model-ESP" class="ar-model" data-pais="ESP" gltf-model="assets/base.glb" position="0 0 0"
-        rotation="0 0 0" scale="0.3 0.3 0.3" visible="false"
-        animation-mixer="clip: *; timeScale: 1; loop: repeat"></a-entity>
+        rotation="0 0 0" scale="0.3 0.3 0.3" visible="false"></a-entity>
     </a-entity>
 
     <a-entity id="marker-FRA" emitevents="true" mindar-image-target="targetIndex: 0">
       <a-entity id="model-FRA" class="ar-model" data-pais="FRA" gltf-model="assets/base.glb" position="0 0 0"
-        rotation="0 0 0" scale="0.3 0.3 0.3" visible="false"
-        animation-mixer="clip: *; timeScale: 1; loop: repeat"></a-entity>
+        rotation="0 0 0" scale="0.3 0.3 0.3" visible="false"></a-entity>
     </a-entity>
 
     <a-entity id="marker-JPN" emitevents="true" mindar-image-target="targetIndex: 9">
       <a-entity id="model-JPN" class="ar-model" data-pais="JPN" gltf-model="assets/base.glb" position="0 0 0"
-        rotation="0 0 0" scale="0.3 0.3 0.3" visible="false"
-        animation-mixer="clip: *; timeScale: 1; loop: repeat"></a-entity>
+        rotation="0 0 0" scale="0.3 0.3 0.3" visible="false"></a-entity>
     </a-entity>
 
     <a-entity id="marker-KOR" emitevents="true" mindar-image-target="targetIndex: 8">
       <a-entity id="model-KOR" class="ar-model" data-pais="KOR" gltf-model="assets/base.glb" position="0 0 0"
-        rotation="0 0 0" scale="0.3 0.3 0.3" visible="false"
-        animation-mixer="clip: *; timeScale: 1; loop: repeat"></a-entity>
+        rotation="0 0 0" scale="0.3 0.3 0.3" visible="false"></a-entity>
     </a-entity>
 
     <a-entity id="marker-MEX" emitevents="true" mindar-image-target="targetIndex: 4">
       <a-entity id="model-MEX" class="ar-model" data-pais="MEX" gltf-model="assets/base.glb" position="0 0 0"
-        rotation="0 0 0" scale="0.3 0.3 0.3" visible="false"
-        animation-mixer="clip: *; timeScale: 1; loop: repeat"></a-entity>
+        rotation="0 0 0" scale="0.3 0.3 0.3" visible="false"></a-entity>
     </a-entity>
 
     <a-entity id="marker-POR" emitevents="true" mindar-image-target="targetIndex: 7">
       <a-entity id="model-POR" class="ar-model" data-pais="POR" gltf-model="assets/base.glb" position="0 0 0"
-        rotation="0 0 0" scale="0.3 0.3 0.3" visible="false"
-        animation-mixer="clip: *; timeScale: 1; loop: repeat"></a-entity>
+        rotation="0 0 0" scale="0.3 0.3 0.3" visible="false"></a-entity>
     </a-entity>
 
     <a-entity id="marker-TUN" emitevents="true" mindar-image-target="targetIndex: 5">
       <a-entity id="model-TUN" class="ar-model" data-pais="TUN" gltf-model="assets/base.glb" position="0 0 0"
-        rotation="0 0 0" scale="0.3 0.3 0.3" visible="false"
-        animation-mixer="clip: *; timeScale: 1; loop: repeat"></a-entity>
+        rotation="0 0 0" scale="0.3 0.3 0.3" visible="false"></a-entity>
     </a-entity>
 
     <a-entity id="marker-URY" emitevents="true" mindar-image-target="targetIndex: 6">
       <a-entity id="model-URY" class="ar-model" data-pais="URY" gltf-model="assets/base.glb" position="0 0 0"
-        rotation="0 0 0" scale="0.3 0.3 0.3" visible="false"
-        animation-mixer="clip: *; timeScale: 1; loop: repeat"></a-entity>
+        rotation="0 0 0" scale="0.3 0.3 0.3" visible="false"></a-entity>
     </a-entity>
 
     <!-- MODELOS ÚNICOS -->
@@ -277,6 +268,10 @@
     src="https://unpkg.com/aframe-animation-mixer-component@3.0.1/dist/aframe-animation-mixer-component.min.js"></script>
 
   <script>
+
+
+    let activeMixers = []; // Para almacenar mixers de animación
+
     // ==================================================
     // CONFIGURACIÓN DE PAÍSES CON ASIGNACIONES SEGÚN LO SOLICITADO
     // ==================================================
@@ -1572,124 +1567,89 @@
     function reproducirAnimaciones(modelEl) {
       if (!modelEl) return;
 
-      console.log("🎬 Intentando activar animaciones...");
-
-      // Función para iniciar animaciones cuando el modelo esté listo
       const iniciarAnimaciones = (mesh) => {
         if (!mesh) return false;
-
-        // Buscar animaciones en el mesh y sus hijos
-        let animacionesEncontradas = false;
         let mixersCreados = [];
 
         mesh.traverse((node) => {
           if (node.isMesh && node.animations && node.animations.length > 0) {
-            console.log(
-              `✅ Encontradas ${node.animations.length} animaciones en nodo:`,
-              node.name || "sin nombre",
-            );
-
             if (!node.userData.mixer) {
               node.userData.mixer = new THREE.AnimationMixer(node);
-
-              node.animations.forEach((clip, index) => {
+              node.userData.actions = [];
+              node.animations.forEach((clip) => {
                 const action = node.userData.mixer.clipAction(clip);
-                action.play();
-                console.log(
-                  `   ▶️ Animación ${index + 1}: ${clip.name || "sin nombre"}`,
-                );
+                node.userData.actions.push(action);
               });
-
               mixersCreados.push(node.userData.mixer);
-              animacionesEncontradas = true;
             }
           }
         });
 
-        // También verificar en la raíz
         if (mesh.animations && mesh.animations.length > 0) {
-          console.log(
-            `✅ Encontradas ${mesh.animations.length} animaciones en la raíz`,
-          );
-
           if (!mesh.userData.mixer) {
             mesh.userData.mixer = new THREE.AnimationMixer(mesh);
-
-            mesh.animations.forEach((clip, index) => {
+            mesh.userData.actions = [];
+            mesh.animations.forEach((clip) => {
               const action = mesh.userData.mixer.clipAction(clip);
-              action.play();
-              console.log(
-                `   ▶️ Animación ${index + 1}: ${clip.name || "sin nombre"}`,
-              );
+              mesh.userData.actions.push(action);
             });
-
             mixersCreados.push(mesh.userData.mixer);
-            animacionesEncontradas = true;
           }
         }
 
-        // Actualizar debug
-        if (animacionesEncontradas) {
-          document.getElementById("debugAnimations").textContent =
-            mixersCreados.length;
-
-          // Forzar actualización continua de los mixers
-          const animateMixers = () => {
-            mixersCreados.forEach((mixer) => {
-              if (mixer) mixer.update(0.016); // ~60fps
-            });
-            requestAnimationFrame(animateMixers);
-          };
-          animateMixers();
+        if (mixersCreados.length > 0) {
+          activeMixers.push(...mixersCreados);
+          document.getElementById("debugAnimations").textContent = activeMixers.length;
+          // Iniciar el bucle de actualización si no está corriendo
+          if (!window._mixerUpdateRunning) {
+            window._mixerUpdateRunning = true;
+            let lastTime = performance.now();
+            function updateMixers() {
+              if (activeMixers.length === 0) {
+                window._mixerUpdateRunning = false;
+                return;
+              }
+              const now = performance.now();
+              let delta = Math.min(0.033, (now - lastTime) / 1000);
+              lastTime = now;
+              activeMixers.forEach(mixer => mixer.update(delta));
+              requestAnimationFrame(updateMixers);
+            }
+            requestAnimationFrame(updateMixers);
+          }
         }
-
-        return animacionesEncontradas;
+        return mixersCreados.length > 0;
       };
 
-      // Intentar obtener el mesh inmediatamente
       const mesh = modelEl.getObject3D("mesh");
-      if (mesh) {
-        if (iniciarAnimaciones(mesh)) {
-          console.log("✨ Animaciones iniciadas correctamente");
-          return;
-        }
-      }
-
-      // Si no está listo, esperar a que cargue
-      modelEl.addEventListener(
-        "model-loaded",
-        function () {
-          const meshLoaded = modelEl.getObject3D("mesh");
-          if (meshLoaded) {
-            if (iniciarAnimaciones(meshLoaded)) {
-              console.log("✨ Animaciones iniciadas después de carga");
-            } else {
-              console.log("⚠️ No se encontraron animaciones en el modelo");
-            }
-          }
-        },
-        { once: true },
-      );
-
-      // Reintentar varias veces (por si tarda)
-      let intentos = 0;
-      const maxIntentos = 20;
-      const intervalo = setInterval(() => {
-        const meshRetry = modelEl.getObject3D("mesh");
-        if (meshRetry) {
-          if (iniciarAnimaciones(meshRetry)) {
-            console.log("✨ Animaciones iniciadas en reintento");
-            clearInterval(intervalo);
-          }
-        }
-        intentos++;
-        if (intentos >= maxIntentos) {
-          console.log("⏰ Tiempo de espera para animaciones agotado");
-          clearInterval(intervalo);
-        }
-      }, 500);
+      if (mesh) iniciarAnimaciones(mesh);
+      modelEl.addEventListener("model-loaded", () => {
+        const meshLoaded = modelEl.getObject3D("mesh");
+        if (meshLoaded) iniciarAnimaciones(meshLoaded);
+      }, { once: true });
     }
 
+    function reproducirAnimacionBoton() {
+      if (!activeMixers.length) {
+        console.log("No hay animaciones preparadas");
+        return;
+      }
+      console.log("▶ Reproduciendo animaciones manualmente...");
+      activeMixers.forEach(mixer => {
+        if (mixer._root && mixer._root.userData && mixer._root.userData.actions) {
+          mixer._root.userData.actions.forEach(action => {
+            action.reset().play();
+            // Opcional: si quieres que la animación se ejecute una sola vez, descomenta:
+            // action.setLoop(THREE.LoopOnce);
+          });
+        } else if (mixer._actions) {
+          mixer._actions.forEach(action => {
+            action.reset().play();
+            // action.setLoop(THREE.LoopOnce);
+          });
+        }
+      });
+    }
     // ==================================================
     // FUNCIÓN PARA MEJORAR MATERIALES METÁLICOS
     // ==================================================
@@ -2119,6 +2079,7 @@
 
         //Evento targetLost para limpiar estado
         marker.addEventListener("targetLost", function () {
+          activeMixers = []; // Limpiar mixers al perder el marcador
           if (triviaActive) return;
 
           // Ocultar todos los modelos principales
@@ -2195,6 +2156,16 @@
         { id: "glitch", icon: "⚡", label: "Glitch" },
         { id: "edge", icon: "✏️", label: "Bordes" },
       ];
+
+
+      document.getElementById("playAnimation").addEventListener("click", () => {
+        reproducirAnimacionBoton();
+      });
+
+      const playAnimationBtn = document.getElementById("playAnimation");
+      if (playAnimationBtn) {
+        playAnimationBtn.addEventListener("click", reproducirAnimacionBoton);
+      }
 
       let currentFilterIndex = 0;
       let currentScreenIndex = 0;
@@ -2456,9 +2427,14 @@
     window.PAISES_CONFIG = PAISES_CONFIG;
     window.MODELOS = MODELOS;
 
+
     console.log(
       "MundiAR listo — Modelos optimizados: SOLO 12 instancias totales (10 bases + 1 estadio + 1 copa)",
     );
+
+
+
+
   </script>
 </body>
 
