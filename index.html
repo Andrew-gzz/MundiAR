@@ -364,6 +364,22 @@
       },
     };
 
+    // ==================================================
+    // FILTROS DE GALERÍA (independientes del filtro de cámara)
+    // ==================================================
+    const GALLERY_FILTERS = [
+      { id: 'none', icon: '🎨', label: 'Normal', css: 'none' },
+      { id: 'blur', icon: '🌀', label: 'Desenfoque', css: 'blur(5px)' },
+      { id: 'heatmap', icon: '🔥', label: 'Mapa Calor', css: 'hue-rotate(180deg) saturate(3) contrast(1.4)' },
+      { id: 'sharp', icon: '🔍', label: 'Nitidez', css: 'url(#gallery-sharpen) contrast(1.2)' },
+      { id: 'bw', icon: '⚫', label: 'Noir', css: 'grayscale(1) contrast(1.3)' },
+      { id: 'sepia', icon: '🟤', label: 'Sepia', css: 'sepia(0.9) contrast(1.1)' },
+      { id: 'vivid', icon: '🌈', label: 'Vivid', css: 'saturate(2.8) contrast(1.15)' },
+      { id: 'cool', icon: '❄️', label: 'Frío', css: 'hue-rotate(200deg) saturate(1.6) brightness(1.05)' },
+      { id: 'vintage', icon: '📷', label: 'Vintage', css: 'sepia(0.55) contrast(1.1) brightness(0.88) saturate(1.4)' },
+      { id: 'neon', icon: '💜', label: 'Neón', css: 'hue-rotate(270deg) saturate(3.5) brightness(1.25) contrast(1.2)' },
+    ];
+
     let activeSeed = ColorSeed.RAINBOW;
 
     // ==================================================
@@ -1850,7 +1866,7 @@
       score: 0,
       completed: false,
     };
-    let currentGallery = { media: [], currentIndex: 0 };
+    let currentGallery = { media: [], currentIndex: 0, filterIndex: 0 };
 
     function startTrivia(questions) {
       if (!questions || !questions.length) return;
@@ -1914,20 +1930,22 @@
       const content = document.getElementById("triviaContent");
       const media = currentGallery.media;
       const current = currentGallery.currentIndex;
+      const currentFilterCSS = GALLERY_FILTERS[currentGallery.filterIndex]?.css || 'none';
 
       let slidesHtml = "";
       media.forEach((item, index) => {
         const activeClass = index === current ? "active" : "";
+        const filterStyle = `style="filter: ${currentFilterCSS}; transition: filter 0.3s ease;"`;
         if (item.type === "image") {
           slidesHtml += `<div class="carousel-slide ${activeClass}">
-                    <img src="${item.url}" alt="${item.title || ""}" loading="lazy">
-                    <div class="carousel-title">${item.title || ""}</div>
-                </div>`;
+        <img src="${item.url}" alt="${item.title || ""}" loading="lazy" ${filterStyle}>
+        <div class="carousel-title">${item.title || ""}</div>
+      </div>`;
         } else if (item.type === "video") {
           slidesHtml += `<div class="carousel-slide ${activeClass}">
-                    <video src="${item.url}" controls ${index === current ? "autoplay" : ""}></video>
-                    <div class="carousel-title">${item.title || ""}</div>
-                </div>`;
+        <video src="${item.url}" controls ${index === current ? "autoplay" : ""} ${filterStyle}></video>
+        <div class="carousel-title">${item.title || ""}</div>
+      </div>`;
         }
       });
 
@@ -1936,28 +1954,58 @@
         dotsHtml += `<span class="carousel-dot ${index === current ? "active" : ""}" onclick="changeGallerySlide(${index})"></span>`;
       });
 
+      // Selector de filtros (reutiliza clase .filter del menú existente)
+      let filtersHtml = GALLERY_FILTERS.map((f, i) => `
+    <div class="filter gallery-filter-btn ${i === currentGallery.filterIndex ? 'active' : ''}"
+         onclick="setGalleryFilter(${i})"
+         title="${f.label}">
+      ${f.icon}
+      <span class="gallery-filter-label">${f.label}</span>
+    </div>
+  `).join('');
+
       content.innerHTML = `
-            <h2 style="color: var(--accent); text-align: center;">📸 Galería</h2>
-            <div class="carousel-container">
-                ${slidesHtml}
-            </div>
-            <div class="carousel-controls">
-                <button class="carousel-btn" onclick="changeGallerySlide(${current - 1})" ${current === 0 ? "disabled" : ""}>‹</button>
-                <span style="font-size: 16px; font-weight: bold;">${current + 1} / ${media.length}</span>
-                <button class="carousel-btn" onclick="changeGallerySlide(${current + 1})" ${current === media.length - 1 ? "disabled" : ""}>›</button>
-            </div>
-            <div class="carousel-indicators">
-                ${dotsHtml}
-            </div>
-            <button class="context-btn" onclick="closeTrivia()" style="margin-top:20px; width:100%;">Cerrar</button>`;
+    <h2 style="color: var(--accent); text-align: center;">📸 Galería</h2>
+
+    <div class="carousel-container">${slidesHtml}</div>
+
+    <div class="carousel-controls">
+      <button class="carousel-btn" onclick="changeGallerySlide(${current - 1})" ${current === 0 ? "disabled" : ""}>‹</button>
+      <span style="font-size: 16px; font-weight: bold;">${current + 1} / ${media.length}</span>
+      <button class="carousel-btn" onclick="changeGallerySlide(${current + 1})" ${current === media.length - 1 ? "disabled" : ""}>›</button>
+    </div>
+
+    <div class="carousel-indicators">${dotsHtml}</div>
+
+    <!-- SELECTOR DE FILTROS DE GALERÍA -->
+    <div class="gallery-filters-wrap">
+      <p class="gallery-filters-title">Filtros</p>
+      <div class="gallery-filters-track">${filtersHtml}</div>
+    </div>
+
+    <button class="context-btn" onclick="closeTrivia()" style="margin-top:12px; width:100%;">Cerrar</button>
+  `;
 
       container.classList.add("active");
     }
-
     window.changeGallerySlide = function (index) {
       if (index < 0 || index >= currentGallery.media.length) return;
       currentGallery.currentIndex = index;
       renderGallery();
+    };
+
+    window.setGalleryFilter = function (index) {
+      currentGallery.filterIndex = index;
+      const f = GALLERY_FILTERS[index];
+      // Aplica el filtro CSS a todas las img y video del carrusel activo
+      document.querySelectorAll('.carousel-slide img, .carousel-slide video').forEach(el => {
+        el.style.filter = f.css;
+        el.style.transition = 'filter 0.3s ease';
+      });
+      // Actualiza el botón activo
+      document.querySelectorAll('.gallery-filter-btn').forEach((btn, i) => {
+        btn.classList.toggle('active', i === index);
+      });
     };
 
     window.answerTrivia = function (idx) {
@@ -2436,6 +2484,18 @@
 
 
   </script>
+
+
+  <!-- Filtro SVG para nitidez real en galería -->
+  <svg style="display:none; position:absolute">
+    <defs>
+      <filter id="gallery-sharpen">
+        <feConvolveMatrix order="3" kernelMatrix="-1 -1 -1
+                      -1  9 -1
+                      -1 -1 -1" preserveAlpha="true" />
+      </filter>
+    </defs>
+  </svg>
 </body>
 
 </html>
