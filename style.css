@@ -1093,3 +1093,40 @@ canvas {
 .gallery-filter-btn.active .gallery-filter-label {
   color: var(--accent);
 }
+
+/* Imagenes del modal de instrucciones */
+.instruction-block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.instruction-img {
+  display: flex;
+  justify-content: center;
+}
+
+.instruction-img img {
+  width: min(100%, 220px);
+  max-height: 380px;
+  object-fit: contain;
+  border-radius: 14px;
+}
+
+@media (max-width: 480px) {
+  .modal-inner {
+    width: calc(100% - 24px);
+    max-height: 86vh;
+    border-radius: 20px;
+  }
+
+  .modal-content {
+    padding: 16px;
+  }
+
+  .instruction-img img {
+    width: min(100%, 180px);
+    max-height: 320px;
+  }
+}
