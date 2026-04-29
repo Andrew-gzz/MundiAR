@@ -2591,6 +2591,7 @@
           switch (screen.type) {
             case "selection":
               overlay.innerHTML = `<h2>${currentState.name}</h2><p>${screen.content}</p>`;
+              actionBtn1.style.display = "none";
               actionBtn2.textContent = "Info";
               actionBtn2.onclick = () => goToCountryInfo(currentState.code);
               break;
