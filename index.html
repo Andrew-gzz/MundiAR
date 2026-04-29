@@ -2180,8 +2180,8 @@
       </div>`;
           } else if (item.type === "video") {
             slidesHtml += `<div class="carousel-slide ${activeClass}">
-        <video class="gallery-video" src="${item.url}" controls controlslist="nofullscreen" ${index === current ? "autoplay" : ""} ${filterStyle}></video>
-        <div class="carousel-title">${item.title || ""}</div>
+        <video class="gallery-video" src="${item.url}" controls controlslist="nofullscreen nodownload" playsinline webkit-playsinline x5-playsinline ${index === current ? "autoplay muted" : ""} ${filterStyle}></video>       
+         <div class="carousel-title">${item.title || ""}</div>
       </div>`;
           }
         });
