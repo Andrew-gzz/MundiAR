@@ -112,6 +112,13 @@ body {
   font-size: 22px;
   color: var(--accent);
 }
+.scan-help-text {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--accent);
+  text-align: center;
+}
 @keyframes pulse {
   0% {
     box-shadow: 0 0 6px var(--accent);
