@@ -1164,3 +1164,25 @@ canvas {
     max-height: 320px;
   }
 }
+.scan-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.scan-brand__logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.scan-brand__name {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--accent);
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
