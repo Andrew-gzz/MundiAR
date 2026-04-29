@@ -2180,7 +2180,7 @@
       </div>`;
           } else if (item.type === "video") {
             slidesHtml += `<div class="carousel-slide ${activeClass}">
-        <video src="${item.url}" controls ${index === current ? "autoplay" : ""} ${filterStyle}></video>
+        <video class="gallery-video" src="${item.url}" controls controlslist="nofullscreen" ${index === current ? "autoplay" : ""} ${filterStyle}></video>
         <div class="carousel-title">${item.title || ""}</div>
       </div>`;
           }
