@@ -32,8 +32,36 @@
       </div>
     </div>
 
+    <!-- LANDING SCREEN -->
+    <div id="landingScreen" class="screen landing-screen active">
+      <div class="landing-panel">
+        <div class="landing-brand">
+          <img
+            class="landing-brand__logo"
+            alt="Logotipo"
+            src="assets/Logotipo.png"
+          />
+          <span class="landing-brand__name">MundiAR</span>
+        </div>
+        <h1>Explora el mundo en realidad aumentada</h1>
+        <p>
+          Escanea banderas, descubre modelos 3D, galerias, trivias, estadios y
+          estadisticas de cada pais.
+        </p>
+        <div class="landing-features">
+          <span>Modelos 3D</span>
+          <span>Galeria</span>
+          <span>Trivia</span>
+          <span>Estadisticas</span>
+        </div>
+        <button id="startLandingBtn" class="landing-start-btn">
+          Iniciar escaneo
+        </button>
+      </div>
+    </div>
+
     <!-- SCAN SCREEN -->
-    <div id="scanScreen" class="screen active">
+    <div id="scanScreen" class="screen">
       <button class="info-btn" id="infoScanBtn">i</button>
       <div class="scan-brand">
         <img
@@ -88,6 +116,17 @@
     <!-- TRIVIA/GALERÍA CONTAINER -->
     <div id="triviaContainer" class="trivia-container">
       <div class="trivia-content" id="triviaContent"></div>
+    </div>
+
+    <!-- MODAL DE ESTADISTICAS -->
+    <div id="statsModal" class="modal-instructions">
+      <div class="modal-inner stats-modal-inner">
+        <div class="modal-header">
+          <h2 id="statsModalTitle">Estadisticas</h2>
+          <button class="modal-close" id="closeStatsBtn">&times;</button>
+        </div>
+        <div class="modal-content" id="statsModalContent"></div>
+      </div>
     </div>
 
     <!-- MODAL DE INSTRUCCIONES -->
@@ -532,6 +571,132 @@
       };
 
       // ==================================================
+      // ESTADISTICAS DE PAISES
+      // ==================================================
+      const COUNTRY_STATISTICS = {
+        ARG: {
+          population: "45.7 millones",
+          capital: "Buenos Aires",
+          area: "2,780,400 km2",
+          currency: "Peso argentino",
+          gdp: "US$638.4 mil millones",
+          gdpPerCapita: "US$13,970",
+          lifeExpectancy: "78 anos",
+          language: "Espanol",
+          detail:
+            "Argentina destaca por su gran territorio, alta urbanizacion y una economia relevante en Sudamerica.",
+        },
+        COL: {
+          population: "52.9 millones",
+          capital: "Bogota",
+          area: "1,141,748 km2",
+          currency: "Peso colombiano",
+          gdp: "US$417 mil millones",
+          gdpPerCapita: "US$7,900",
+          lifeExpectancy: "77 anos",
+          language: "Espanol",
+          detail:
+            "Colombia combina costas en dos oceanos, alta biodiversidad y una poblacion concentrada en grandes areas urbanas.",
+        },
+        ESP: {
+          population: "48.8 millones",
+          capital: "Madrid",
+          area: "505,990 km2",
+          currency: "Euro",
+          gdp: "US$1.73 billones",
+          gdpPerCapita: "US$35,327",
+          lifeExpectancy: "84 anos",
+          language: "Espanol",
+          detail:
+            "Espana tiene una de las mayores economias de Europa y una esperanza de vida alta.",
+        },
+        FRA: {
+          population: "68.6 millones",
+          capital: "Paris",
+          area: "643,801 km2",
+          currency: "Euro",
+          gdp: "US$3.16 billones",
+          gdpPerCapita: "US$46,103",
+          lifeExpectancy: "83 anos",
+          language: "Frances",
+          detail:
+            "Francia es una economia avanzada con fuerte peso cultural, turistico e industrial.",
+        },
+        JPN: {
+          population: "124.0 millones",
+          capital: "Tokio",
+          area: "377,975 km2",
+          currency: "Yen japones",
+          gdp: "US$4.03 billones",
+          gdpPerCapita: "US$32,487",
+          lifeExpectancy: "84 anos",
+          language: "Japones",
+          detail:
+            "Japon combina alta densidad urbana, tecnologia avanzada y una poblacion muy longeva.",
+        },
+        KOR: {
+          population: "51.7 millones",
+          capital: "Seul",
+          area: "100,210 km2",
+          currency: "Won surcoreano",
+          gdp: "US$1.88 billones",
+          gdpPerCapita: "US$36,239",
+          lifeExpectancy: "84 anos",
+          language: "Coreano",
+          detail:
+            "Corea del Sur es una potencia tecnologica con una economia exportadora y poblacion altamente urbana.",
+        },
+        MEX: {
+          population: "130.9 millones",
+          capital: "Ciudad de Mexico",
+          area: "1,964,375 km2",
+          currency: "Peso mexicano",
+          gdp: "US$1.85 billones",
+          gdpPerCapita: "US$14,158",
+          lifeExpectancy: "75 anos",
+          language: "Espanol",
+          detail:
+            "Mexico es uno de los paises mas poblados de America y una de las mayores economias de la region.",
+        },
+        POR: {
+          population: "10.6 millones",
+          capital: "Lisboa",
+          area: "92,212 km2",
+          currency: "Euro",
+          gdp: "US$303 mil millones",
+          gdpPerCapita: "US$28,600",
+          lifeExpectancy: "82 anos",
+          language: "Portugues",
+          detail:
+            "Portugal tiene una economia abierta, alta esperanza de vida y fuerte relacion historica con el Atlantico.",
+        },
+        TUN: {
+          population: "12.3 millones",
+          capital: "Tunez",
+          area: "163,610 km2",
+          currency: "Dinar tunecino",
+          gdp: "US$51.3 mil millones",
+          gdpPerCapita: "US$4,181",
+          lifeExpectancy: "77 anos",
+          language: "Arabe",
+          detail:
+            "Tunez conecta el Mediterraneo con el norte de Africa y concentra gran parte de su poblacion en zonas costeras.",
+        },
+        URY: {
+          population: "3.4 millones",
+          capital: "Montevideo",
+          area: "176,215 km2",
+          currency: "Peso uruguayo",
+          gdp: "US$81 mil millones",
+          gdpPerCapita: "US$23,907",
+          lifeExpectancy: "78 anos",
+          language: "Espanol",
+          detail:
+            "Uruguay tiene una poblacion pequena, alta urbanizacion y buenos indicadores sociales dentro de la region.",
+        },
+      };
+
+      // ==================================================
       // COLOR SEEDS (PALETA DE COLORES PARA FUEGOS)
       // ==================================================
       const ColorSeed = {
@@ -604,6 +769,38 @@
       ];
 
       let activeSeed = ColorSeed.RAINBOW;
+
+      function createStatisticsScreen(countryCode) {
+        const stats = COUNTRY_STATISTICS[countryCode];
+        if (!stats) return null;
+
+        return {
+          name: "Estadisticas",
+          type: "statistics",
+          color: "#00BCD4",
+          content:
+            "Modelo base del pais con estadisticas generales aproximadas",
+          info: stats,
+        };
+      }
+
+      function buildScreensWithStatistics(countryCode, screens) {
+        if (!screens?.length) return screens;
+        if (screens.some((screen) => screen.type === "statistics")) {
+          return screens;
+        }
+
+        const statsScreen = createStatisticsScreen(countryCode);
+        if (!statsScreen) return screens;
+
+        const triviaIndex = screens.findIndex(
+          (screen) => screen.type === "trivia",
+        );
+        const result = [...screens];
+        const insertIndex = triviaIndex >= 0 ? triviaIndex : result.length;
+        result.splice(insertIndex, 0, statsScreen);
+        return result;
+      }
 
       // ==================================================
       // A-FRAME COMPONENT: AR-FIREWORKS-SYSTEM (con partículas más grandes)
@@ -728,7 +925,7 @@
 
       function applyFilter(filterType) {
         currentFilter = filterType;
-        const video = document.querySelector("video");
+        const video = document.querySelector("a-scene video, video");
         if (!video) return;
 
         if (glitchInterval) {
@@ -739,6 +936,7 @@
         video.style.filter = "";
         video.style.imageRendering = "auto";
         video.style.transform = "none";
+        video.style.transformOrigin = "center center";
         video.style.width = "100%";
         video.style.height = "100%";
         video.style.opacity = "1";
@@ -746,10 +944,7 @@
         switch (filterType) {
           case "pixel":
             video.style.imageRendering = "pixelated";
-            video.style.transform = "scale(0.3)";
-            video.style.transformOrigin = "top left";
-            video.style.width = "333%";
-            video.style.height = "333%";
+            video.style.filter = "contrast(1.15) saturate(1.2)";
             break;
           case "blur":
             video.style.filter = "blur(5px)";
@@ -765,7 +960,6 @@
             video.style.filter = "contrast(1.5) brightness(1.2)";
             glitchInterval = setInterval(() => {
               if (Math.random() > 0.7) {
-                video.style.transform = `translate(${Math.random() * 5 - 2.5}px, ${Math.random() * 5 - 2.5}px)`;
                 video.style.opacity = "0.9";
                 setTimeout(() => {
                   video.style.transform = "none";
@@ -939,6 +1133,11 @@
                 {
                   type: "image",
                   url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0-qlHb6B5rBLzXZz2y0dxBGkepnh3P1CLdA&s?w=400",
+                  title: "Montañas",
+                },
+                {
+                  type: "video",
+                  url: "assets/COL/Video.mp4",
                   title: "Montañas",
                 },
               ],
@@ -1444,6 +1643,11 @@
                   url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTogh7UleVkyISTXXkvyOOyZB6tBjUAIpOTvg&s?w=400",
                   title: "Comida",
                 },
+                {
+                  type: "video",
+                  url: "assets/KOR/Video.mp4",
+                  title: "Cultura",
+                },
               ],
             },
             {
@@ -1564,6 +1768,11 @@
                   type: "image",
                   url: "https://www.unileverfoodsolutions.com.mx/tendencias/de-mexico-para-el-mundo/platillos-mexicanos/top10-platillos/jcr:content/parsys/content-aside-footer/columncontrol_copy/columnctrl_parsys_2/textimage/image.transform/jpeg-optimized/image.1592429869891.jpg?w=400",
                   title: "Comida",
+                },
+                {
+                  type: "video",
+                  url: "assets/MEX/Video.mp4",
+                  title: "Cultura",
                 },
               ],
             },
@@ -1690,6 +1899,11 @@
                   url: "https://www.livingtours.com/public/blog/posts/20200123161347-reQkxvU6.jpg?w=400",
                   title: "Pastel de Belém",
                 },
+                {
+                  type: "video",
+                  url: "assets/POR/Video.mp4",
+                  title: "Comida típica",
+                },
               ],
             },
             {
@@ -1815,6 +2029,11 @@
                   type: "image",
                   url: "https://e00-marca.uecdn.es/blogs/paralelo20/imagenes_posts/2020/07/07/203082_570x380.jpg?w=400",
                   title: "Mar",
+                },
+                {
+                  type: "video",
+                  url: "assets/TUN/Video.mp4",
+                  title: "Cosas bellas",
                 },
               ],
             },
@@ -1945,6 +2164,11 @@
                   type: "image",
                   url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAU-BFUySQv-ZrLRevC1SwDvjnCVEk6dDg2Q&s?w=400",
                   title: "Campo",
+                },
+                {
+                  type: "video",
+                  url: "assets/URY/Video.mp4",
+                  title: "Cultura",
                 },
               ],
             },
@@ -2729,7 +2953,9 @@
               code: cfg.code,
               name: cfg.name,
               color: cfg.color,
-              screens: cfg.screens?.length ? cfg.screens : null,
+              screens: cfg.screens?.length
+                ? buildScreensWithStatistics(cfg.code, cfg.screens)
+                : null,
             });
 
             document.getElementById("debugMarkerStatus").textContent =
@@ -2819,6 +3045,8 @@
       // UI
       // ==================================================
       function setupUI() {
+        const landingScreen = document.getElementById("landingScreen");
+        const startLandingBtn = document.getElementById("startLandingBtn");
         const scanScreen = document.getElementById("scanScreen");
         const mainScreen = document.getElementById("mainScreen");
         const overlay = document.getElementById("screenOverlay");
@@ -2850,6 +3078,28 @@
         let currentFilterIndex = 0;
         let currentScreenIndex = 0;
         let currentState = null;
+        let landingDismissed = false;
+
+        function closeLanding() {
+          if (!landingScreen || landingDismissed) return;
+
+          landingDismissed = true;
+          landingScreen.classList.add("leaving");
+          setTimeout(() => {
+            landingScreen.classList.remove("active", "leaving");
+            if (getState()?.code) {
+              mainScreen.classList.add("active");
+              scanScreen.classList.remove("active");
+            } else {
+              scanScreen.classList.add("active");
+              mainScreen.classList.remove("active");
+            }
+          }, 520);
+        }
+
+        if (startLandingBtn) {
+          startLandingBtn.addEventListener("click", closeLanding);
+        }
 
         const infoScanBtn = document.getElementById("infoScanBtn");
         if (infoScanBtn)
@@ -2857,6 +3107,10 @@
 
         // === Modal de instrucciones ===
         const instructionsModal = document.getElementById("instructionsModal");
+        const statsModal = document.getElementById("statsModal");
+        const statsModalTitle = document.getElementById("statsModalTitle");
+        const statsModalContent = document.getElementById("statsModalContent");
+        const closeStatsBtn = document.getElementById("closeStatsBtn");
         const infoBtn = document.getElementById("infoLoaderBtn");
         const closeInstructionsBtn = document.getElementById(
           "closeInstructionsBtn",
@@ -2877,6 +3131,39 @@
           instructionsModal.addEventListener("click", (e) => {
             if (e.target === instructionsModal) hideInstructionsModal();
           });
+        }
+        if (closeStatsBtn)
+          closeStatsBtn.addEventListener("click", () =>
+            statsModal.classList.remove("active"),
+          );
+        if (statsModal) {
+          statsModal.addEventListener("click", (e) => {
+            if (e.target === statsModal) statsModal.classList.remove("active");
+          });
+        }
+
+        function renderStatItem(label, value) {
+          return `<div class="stats-item"><span>${label}</span><strong>${value || "No disponible"}</strong></div>`;
+        }
+
+        function openStatsModal(countryName, stats) {
+          if (!statsModal || !statsModalTitle || !statsModalContent) return;
+
+          statsModalTitle.textContent = `Estadisticas de ${countryName}`;
+          statsModalContent.innerHTML = `
+            <p class="stats-summary">${stats.detail || "Informacion general del pais."}</p>
+            <div class="stats-grid">
+              ${renderStatItem("Poblacion", stats.population)}
+              ${renderStatItem("Capital", stats.capital)}
+              ${renderStatItem("Superficie", stats.area)}
+              ${renderStatItem("Moneda", stats.currency)}
+              ${renderStatItem("PIB", stats.gdp)}
+              ${renderStatItem("PIB per capita", stats.gdpPerCapita)}
+              ${renderStatItem("Esperanza de vida", stats.lifeExpectancy)}
+              ${renderStatItem("Idioma principal", stats.language)}
+            </div>
+          `;
+          statsModal.classList.add("active");
         }
 
         function buildFilters() {
@@ -2993,6 +3280,14 @@
                 loadScreenContent();
               };
               break;
+            case "statistics":
+              overlay.innerHTML = `<h2>Estadisticas ${currentState.name}</h2><p>${screen.content}</p>
+                        <p style="color: var(--accent); font-size: 18px; margin-top:10px;">El modelo base del pais esta visible en RA.</p>`;
+              actionBtn1.textContent = "Ver datos";
+              actionBtn2.style.display = "none";
+              actionBtn1.onclick = () =>
+                openStatsModal(currentState.name, screen.info || {});
+              break;
             case "trivia":
               overlay.innerHTML = `<h2>Trivia ${currentState.name}</h2><p>${screen.content}</p>
                         <p style="margin-top:10px"> ${screen.questions?.length || 0} preguntas disponibles</p>`;
@@ -3032,7 +3327,7 @@
           if (!state?.code) {
             if (currentState !== null) {
               currentState = null;
-              scanScreen.classList.add("active");
+              if (landingDismissed) scanScreen.classList.add("active");
               mainScreen.classList.remove("active");
               setAccent("#b2ff24");
             }
@@ -3043,7 +3338,7 @@
             currentScreenIndex = 0;
           }
           scanScreen.classList.remove("active");
-          mainScreen.classList.add("active");
+          if (landingDismissed) mainScreen.classList.add("active");
           loadScreenContent();
         });
 
