@@ -3406,10 +3406,51 @@
       document.getElementById("loading").style.display = "none";
     }
 
-    function goToCountryInfo(countryCode) {
-      if (!countryCode) return;
-      window.location.href = `./info.html?pais=${encodeURIComponent(countryCode)}`;
-    }
+  function goToCountryInfo(countryCode) {
+  if (!countryCode || !PAISES_CONFIG[countryCode]) return;
+  const cfg = PAISES_CONFIG[countryCode];
+
+  // Reutiliza el triviaContainer igual que galería
+  triviaActive = true;
+  document.querySelectorAll("[mindar-image-target]").forEach((m) => m.pause());
+
+  const container = document.getElementById("triviaContainer");
+  const content = document.getElementById("triviaContent");
+
+  // Busca la descripción en MARKERS_CONFIG (info.html tiene sus propias descripciones)
+  const descriptions = {
+    ARG: "Tricampeona del mundo (1978, 1986, 2022). Cuna de leyendas como Maradona y Messi, la albiceleste es sinónimo de pasión técnica y garra competitiva en cada cita mundialista.",
+    COL: "Con seis participaciones mundialistas, destaca su histórica actuación en Brasil 2014 llegando a cuartos de final. Reconocida por su fútbol alegre, vistoso y su icónica generación de los 90.",
+    ESP: 'Campeona en Sudáfrica 2010. "La Roja" revolucionó el fútbol con su estilo de posesión (Tiki-taka), logrando una hegemonía histórica entre 2008 y 2012 que culminó con la estrella mundial.',
+    FRA: 'Bicampeona mundial (1998, 2018). "Les Bleus" se caracterizan por una potencia física envidiable y una formación de talento joven que los mantiene en la élite del fútbol global constantemente.',
+    JPN: 'La potencia más consistente de Asia. Conocidos como los "Samuráis Azules", destacan por su disciplina táctica, velocidad y por haber alcanzado los octavos de final en varias ocasiones recientes.',
+    KOR: "Hizo historia en 2002 logrando el cuarto lugar, la mejor posición para un equipo asiático. Son famosos por su incansable despliegue físico y su espíritu de lucha hasta el último minuto.",
+    MEX: "Un gigante de la CONCACAF con 17 apariciones. Anfitrión de dos Mundiales (1970, 1986), es célebre por su fiel afición y por avanzar consistentemente de la fase de grupos durante décadas.",
+    POR: "Liderada históricamente por figuras como Eusébio y Cristiano Ronaldo. Su mejor marca fue el tercer puesto en 1966. Es un equipo técnico que siempre compite al más alto nivel europeo.",
+    TUN: 'Las "Águilas de Cartago" fueron el primer equipo africano en ganar un partido en un Mundial (1978). Representan el orgullo del fútbol magrebí con una defensa sólida y ordenada.',
+    URY: 'Primer campeón mundial (1930) y protagonista del inolvidable "Maracanazo" en 1950. Un país pequeño en territorio pero gigante en historia, definido por la legendaria "Garra Charrúa".',
+  };
+
+  content.innerHTML = `
+    <h2 style="color: var(--accent); text-align: center; margin-bottom: 16px;">
+      🌍 ${cfg.nombre}
+    </h2>
+    <div style="text-align:center; margin-bottom: 18px;">
+      <img src="${cfg.bandera}" alt="Bandera ${cfg.nombre}"
+        style="width:120px; height:120px; border-radius:50%; object-fit:cover;
+               border: 3px solid var(--accent); box-shadow: 0 0 20px rgba(0,0,0,0.5);" />
+    </div>
+    <p style="font-size:15px; color:rgba(255,255,255,0.8); line-height:1.6;
+              text-align:center; margin-bottom:20px; padding: 0 4px;">
+      ${descriptions[countryCode] || "Información no disponible."}
+    </p>
+    <button class="context-btn" onclick="closeTrivia()" style="width:100%; margin-top:8px;">
+      Cerrar
+    </button>
+  `;
+
+  container.classList.add("active");
+}
     window.getState = getState;
     window.setState = setState;
     window.MARKERS_CONFIG = MARKERS_CONFIG;
