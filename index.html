@@ -896,7 +896,7 @@
 
       function applyFilter(filterType) {
         currentFilter = filterType;
-        const video = document.querySelector("video");
+        const video = document.querySelector("a-scene video, video");
         if (!video) return;
 
         if (glitchInterval) {
@@ -907,6 +907,7 @@
         video.style.filter = "";
         video.style.imageRendering = "auto";
         video.style.transform = "none";
+        video.style.transformOrigin = "center center";
         video.style.width = "100%";
         video.style.height = "100%";
         video.style.opacity = "1";
@@ -914,10 +915,7 @@
         switch (filterType) {
           case "pixel":
             video.style.imageRendering = "pixelated";
-            video.style.transform = "scale(0.3)";
-            video.style.transformOrigin = "top left";
-            video.style.width = "333%";
-            video.style.height = "333%";
+            video.style.filter = "contrast(1.15) saturate(1.2)";
             break;
           case "blur":
             video.style.filter = "blur(5px)";
@@ -933,7 +931,6 @@
             video.style.filter = "contrast(1.5) brightness(1.2)";
             glitchInterval = setInterval(() => {
               if (Math.random() > 0.7) {
-                video.style.transform = `translate(${Math.random() * 5 - 2.5}px, ${Math.random() * 5 - 2.5}px)`;
                 video.style.opacity = "0.9";
                 setTimeout(() => {
                   video.style.transform = "none";
