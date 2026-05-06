@@ -37,6 +37,120 @@ body {
   }
 }
 
+.landing-screen {
+  z-index: 70;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(178, 255, 36, 0.16), transparent 32%),
+    linear-gradient(180deg, rgba(8, 12, 18, 0.96), rgba(2, 5, 10, 0.98));
+}
+
+.landing-screen.leaving {
+  animation: landingSlideOut 0.52s ease forwards;
+}
+
+@keyframes landingSlideOut {
+  to {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+.landing-panel {
+  width: min(100%, 520px);
+  padding: 26px;
+  border: 2px solid var(--accent);
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.78);
+  box-shadow: 0 0 30px rgba(178, 255, 36, 0.18);
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+.landing-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.landing-brand__logo {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.landing-brand__name {
+  color: var(--accent);
+  font-size: 32px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.landing-panel h1 {
+  color: #fff;
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.05;
+  margin-bottom: 14px;
+}
+
+.landing-panel p {
+  color: #d8dee8;
+  font-size: 16px;
+  line-height: 1.45;
+  margin: 0 auto 18px;
+  max-width: 420px;
+}
+
+.landing-features {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 20px 0 24px;
+}
+
+.landing-features span {
+  min-height: 42px;
+  padding: 10px;
+  border: 1px solid rgba(178, 255, 36, 0.38);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #eef5ff;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing-start-btn {
+  width: 100%;
+  max-width: 260px;
+  min-height: 50px;
+  border: none;
+  border-radius: 30px;
+  background: var(--accent);
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 18px rgba(178, 255, 36, 0.35);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.3s ease;
+}
+
+.landing-start-btn:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 26px rgba(178, 255, 36, 0.55);
+}
+
+.landing-start-btn:active {
+  transform: scale(0.96);
+}
+
 .scan-box {
   position: relative;
   width: 220px;

@@ -32,8 +32,36 @@
       </div>
     </div>
 
+    <!-- LANDING SCREEN -->
+    <div id="landingScreen" class="screen landing-screen active">
+      <div class="landing-panel">
+        <div class="landing-brand">
+          <img
+            class="landing-brand__logo"
+            alt="Logotipo"
+            src="assets/Logotipo.png"
+          />
+          <span class="landing-brand__name">MundiAR</span>
+        </div>
+        <h1>Explora el mundo en realidad aumentada</h1>
+        <p>
+          Escanea banderas, descubre modelos 3D, galerias, trivias, estadios y
+          estadisticas de cada pais.
+        </p>
+        <div class="landing-features">
+          <span>Modelos 3D</span>
+          <span>Galeria</span>
+          <span>Trivia</span>
+          <span>Estadisticas</span>
+        </div>
+        <button id="startLandingBtn" class="landing-start-btn">
+          Iniciar escaneo
+        </button>
+      </div>
+    </div>
+
     <!-- SCAN SCREEN -->
-    <div id="scanScreen" class="screen active">
+    <div id="scanScreen" class="screen">
       <button class="info-btn" id="infoScanBtn">i</button>
       <div class="scan-brand">
         <img
@@ -2986,6 +3014,8 @@
       // UI
       // ==================================================
       function setupUI() {
+        const landingScreen = document.getElementById("landingScreen");
+        const startLandingBtn = document.getElementById("startLandingBtn");
         const scanScreen = document.getElementById("scanScreen");
         const mainScreen = document.getElementById("mainScreen");
         const overlay = document.getElementById("screenOverlay");
@@ -3017,6 +3047,28 @@
         let currentFilterIndex = 0;
         let currentScreenIndex = 0;
         let currentState = null;
+        let landingDismissed = false;
+
+        function closeLanding() {
+          if (!landingScreen || landingDismissed) return;
+
+          landingDismissed = true;
+          landingScreen.classList.add("leaving");
+          setTimeout(() => {
+            landingScreen.classList.remove("active", "leaving");
+            if (getState()?.code) {
+              mainScreen.classList.add("active");
+              scanScreen.classList.remove("active");
+            } else {
+              scanScreen.classList.add("active");
+              mainScreen.classList.remove("active");
+            }
+          }, 520);
+        }
+
+        if (startLandingBtn) {
+          startLandingBtn.addEventListener("click", closeLanding);
+        }
 
         const infoScanBtn = document.getElementById("infoScanBtn");
         if (infoScanBtn)
@@ -3244,7 +3296,7 @@
           if (!state?.code) {
             if (currentState !== null) {
               currentState = null;
-              scanScreen.classList.add("active");
+              if (landingDismissed) scanScreen.classList.add("active");
               mainScreen.classList.remove("active");
               setAccent("#b2ff24");
             }
@@ -3255,7 +3307,7 @@
             currentScreenIndex = 0;
           }
           scanScreen.classList.remove("active");
-          mainScreen.classList.add("active");
+          if (landingDismissed) mainScreen.classList.add("active");
           loadScreenContent();
         });
 
